@@ -270,7 +270,7 @@ let dropdownItems = [
       { displayName: 'Message From the Managing Director', path: '/about/directors-message' },
       { displayName: 'Principle Message', path: '/about/principals-message' },
       { displayName: 'School Staff', path: '/about/school-staff' },
-      { displayName: 'PGS Gwalior', path: 'https://pgs-gwaliour.vercel.app/' }
+  
    
     ]
   },
