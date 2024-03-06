@@ -3,8 +3,8 @@
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { getAllNews, deleteNews } from '@/lib/services/news/index';
-import NewsForm from '@/components/NewsForm/newsForm';
-import NewsTable from '@/components/NewsTable/newsTable';
+import NewsForm from '@/components/News/NewsForm';
+import NewsTable from '@/components/News/NewsTable';
 import { getAuthToken } from '@/lib/middleware/apiInceptor';
 
 const NewsPage = () => {

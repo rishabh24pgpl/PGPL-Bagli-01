@@ -1,48 +1,21 @@
-// // NewsTable.jsx
-// import React from 'react';
-
-// const NewsTable = ({ newsList, onDelete, onEdit }) => {
-//   return (
-//     <>
-//     <div className="news-table">
-//       <h2>News Table</h2>
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>Title</th>
-//             <th>Published Date</th>
-//             <th>Action</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {newsList?.map((news) => (
-//             <tr key={news.id}>
-//               <td>{news.title}</td>
-//               <td>{news.publishedDate}</td>
-//               <td>
-//                 <button onClick={() => onEdit(news.id)}>Edit</button>
-//                 <button onClick={() => onDelete(news.id)}>Delete</button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-
-
-//     </>
-//   );
-// };
-
-// export default NewsTable;
 
 // components/NewsTable/NewsTable.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import Pagination from '@/components/Pagination/Pagination'; // Import your Pagination component
 
 const NewsTable = ({ newsList, onDelete, onEdit }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(5); // Set your desired items per page
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedNewsId, setSelectedNewsId] = useState(null);
+  const [paginatedNewsList, setPaginatedNewsList] = useState([]);
+
+  useEffect(() => {
+    const indexOfLastNews = currentPage * itemsPerPage;
+    const indexOfFirstNews = indexOfLastNews - itemsPerPage;
+    setPaginatedNewsList(newsList.slice(indexOfFirstNews, indexOfLastNews));
+  }, [currentPage, itemsPerPage, newsList]);
 
   const handleDelete = (uuid) => {
     setSelectedNewsId(uuid);
@@ -61,6 +34,10 @@ const NewsTable = ({ newsList, onDelete, onEdit }) => {
   const closeDeleteModal = () => {
     setSelectedNewsId(null);
     setIsDeleteModalOpen(false);
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -84,13 +61,13 @@ const NewsTable = ({ newsList, onDelete, onEdit }) => {
             </tr>
           </thead>
           <tbody>
-            {newsList.map((news, index) => (
+            {paginatedNewsList.map((news, index) => (
               <tr
                 key={index}
                 className={`${index % 2 === 0
-                    ? 'even:bg-gray-50 even:dark:bg-gray-800'
-                    : 'odd:bg-white odd:dark:bg-gray-900'
-                  } border-b dark:border-gray-700`}
+                  ? 'even:bg-gray-50 even:dark:bg-gray-800'
+                  : 'odd:bg-white odd:dark:bg-gray-900'
+                } border-b dark:border-gray-700`}
               >
                 <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   {news.title}
@@ -117,10 +94,17 @@ const NewsTable = ({ newsList, onDelete, onEdit }) => {
           </tbody>
         </table>
 
+        {/* Pagination component */}
+        <Pagination
+          totalItems={newsList.length}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+
         {/* Delete Confirmation Modal */}
         {isDeleteModalOpen && (
-          <div c
-            lassName="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative z-50 bg-white p-6 rounded-md">
               <p className="text-lg font-semibold mb-4">Are you sure you want to delete this news?</p>
@@ -142,8 +126,6 @@ const NewsTable = ({ newsList, onDelete, onEdit }) => {
           </div>
         )}
       </div>
-
-
     </>
   );
 };

@@ -106,8 +106,8 @@ const NewsForm = ({ selectedNewsId, onFormSubmit, newsList }) => {
   return (
     <>
       <div className='flex flex-col w-full justify-center items-center bg-[url("/MessageSvg.svg")]'>
-        <h1 className='text-center mx-auto w-full my-3 text-4xl font-bold text-tred '>News Details Form</h1>
-        <div className='w-11/12 rounded-lg flex flex-col justify-center items-center bg-bred opacity-75 p-5' onSubmit={handleSubmit}>
+        <h1 className='text-center mx-auto w-full my-3 text-4xl font-bold text-tgreen '>News Details Form</h1>
+        <div className='w-11/12 rounded-lg flex flex-col justify-center items-center bg-bgreen opacity-75 p-5' onSubmit={handleSubmit}>
           <div className='w-full grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 '>
             {fields.map((field) => (
               <div key={field.name} className='w-full flex justify-center py-2 px-4'>
@@ -131,16 +131,18 @@ const NewsForm = ({ selectedNewsId, onFormSubmit, newsList }) => {
           </div>
           <button
             onClick={handleSubmit}
-            className="w-40 my-5 mx-auto p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 bg-white hover:bg-tred">Submit
+            className="w-40 my-5 mx-auto p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 bg-white hover:bg-tgreen">Submit
           </button>
         </div>
       </div>
+
 
       {/* Loading indicator */}
       {isLoading && <Loader />}
 
       {/* Error notification */}
       {hasError.msg && <Notification type={hasError.type} message={hasError.msg} />}
+
     </>
   );
 };

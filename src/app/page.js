@@ -9,7 +9,7 @@ import CardNavigatePage from '@/components/CardNavigatePage/NavigateCard'
 import Counter from '@/components/Counter/page'
 
 import ImageGallery from "@/components/ImageHomeGallary/ImageHomeGallary";
-import LatestNews from "@/components/Newscards/NewsSection";
+import LatestNews from "@/components/News/NewsSection";
 import ModalHome from "@/components/ModalHome/ModalHome";
 
 

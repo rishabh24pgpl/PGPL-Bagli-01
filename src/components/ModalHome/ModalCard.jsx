@@ -38,8 +38,8 @@ export default function ModalCard() {
   return (
     <>
       <div className="w-full h-full " >
-        <h1 className='text-center p-3 text-tred text-5xl font-extrabold'>Pratibha Global School, BAGLI</h1>
-        <h2 className='text-center p-3 text-tred text-3xl font-extrabold'>Admission Open 2024-25</h2>
+        <h1 className='text-center p-3 text-tgreen text-5xl font-extrabold'>Pratibha Global School, Indore</h1>
+        <h2 className='text-center p-3 text-tgreen text-3xl font-extrabold'>Admission Open 2024-25</h2>
 
         <div className='flex flex-col md:flex-row md:justify-around items-center bg-cover'>
           <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 w-full md:w-80 shadow-md flex flex-col border-indigo-200 rounded-xl ">
@@ -78,7 +78,7 @@ export default function ModalCard() {
               required
               className="border border-gray-300 rounded-md px-4 py-2"
             >
-              <option value="Bagli">Bagli</option>
+              <option value="Indore">Indore</option>
               <option value="Bagli">Bagli</option>
               <option value="Gwaliour">Gwaliour</option>
               <option value="Nathdwara">Nathdwara</option>
@@ -109,7 +109,7 @@ export default function ModalCard() {
               size="large" // Adjust button size as needed
 
               className="text-white px-4 py-2 rounded-lg"
-              style={{ background: '#ff0000' }}
+              style={{ background: '#00a76f' }}
             >
               Submit
             </Button>

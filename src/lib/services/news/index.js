@@ -1,6 +1,7 @@
 import { api } from "@/lib/middleware/apiInceptor"
 import { ADD_NEWS } from ".."
 import { toast } from "react-toastify";
+import { handleError } from "@/lib/helpers/handleErrors";
 
 export const addNews =async(payload) =>{
     const res = await api.post(ADD_NEWS, payload)
@@ -40,3 +41,11 @@ export const deleteNews = async (uuid) => {
     }
   };
   
+  export const getNewsDetails =async(uuid)=>{
+    try {
+      const res = await api.get(`${ADD_NEWS}/${uuid}`);
+      return res.data.payload
+    } catch (error) {
+      handleError(error);
+    }
+  }

@@ -74,7 +74,7 @@ const Navbar = () => {
 
               {/* Login button */}
               <div className="flex">
-                <Link className="text-xs px-4 py-2 leading-none rounded-full hover:bg-red-300 hover:text-black border-2" href='/admin/login' onClick={handleStuffLogin}>
+                <Link className="text-xs px-4 py-2 leading-none rounded-full hover:bg-red-300 hover:text-black border-2" href='/loginPage' onClick={handleStuffLogin}>
 
                   STAFF LOGIN
                 </Link>
@@ -306,7 +306,7 @@ let dropdownItems = [
   {
     name: 'NEWS',
     values: [
-      { displayName: 'News', path: '/news' },
+      { displayName: 'News', path: '/newsCard' },
       { displayName: 'Upcoming Events', path: '/events' },
       { displayName: 'Events', path: '/studentLife' },
       { displayName: 'Careers', path: '/careers' }
